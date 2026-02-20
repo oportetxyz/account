@@ -124,10 +124,6 @@ contract TestFindings is BaseTest {
         intent.signature = _sig(k, intent);
     }
 
-    ////////////////////////////////////////////////////////////////////////
-    // V-002 Helpers
-    ////////////////////////////////////////////////////////////////////////
-
     function _createExternalKey(address signer, bool isSuperAdmin)
         internal
         pure
