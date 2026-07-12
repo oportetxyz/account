@@ -52,7 +52,6 @@ import {ExperimentERC20} from "./mock/ExperimentalERC20.sol";
  *   "[1]" "/deploy/custom-config.toml"
  */
 contract DeployMain is Script, Config, SafeSingletonDeployer {
-
     // Chain configuration struct
     struct ChainConfig {
         uint256 chainId;
@@ -112,11 +111,11 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         // Load configuration and setup forks (enable write-back to save deployed addresses)
         string memory fullConfigPath = string.concat(vm.projectRoot(), configPath);
         _loadConfigAndForks(fullConfigPath, true);
-        
+
         // Get all available chain IDs from configuration
         targetChainIds = config.getChainIds();
         require(targetChainIds.length > 0, "No chains found in configuration");
-        
+
         // Load configuration for each chain
         loadConfigurations();
         loadDeployedContracts();
@@ -131,14 +130,14 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         // Load configuration and setup forks (enable write-back to save deployed addresses)
         string memory fullConfigPath = string.concat(vm.projectRoot(), configPath);
         _loadConfigAndForks(fullConfigPath, true);
-        
+
         // If empty array, get all available chains
         if (chainIds.length == 0) {
             chainIds = config.getChainIds();
         }
         targetChainIds = chainIds;
         require(targetChainIds.length > 0, "No chains found in configuration");
-        
+
         // Load configuration for each chain
         loadConfigurations();
         loadDeployedContracts();
@@ -152,24 +151,23 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
      */
     function run(uint256[] memory chainIds, string memory _configPath) external {
         configPath = _configPath;
-        
+
         // Load configuration and setup forks (enable write-back to save deployed addresses)
         string memory fullConfigPath = string.concat(vm.projectRoot(), configPath);
         _loadConfigAndForks(fullConfigPath, true);
-        
+
         // If empty array, get all available chains
         if (chainIds.length == 0) {
             chainIds = config.getChainIds();
         }
         targetChainIds = chainIds;
         require(targetChainIds.length > 0, "No chains found in configuration");
-        
+
         // Load configuration for each chain
         loadConfigurations();
         loadDeployedContracts();
         executeDeployment();
     }
-
 
     /**
      * @notice Load configurations for all target chains
@@ -197,7 +195,11 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
      * @notice Load chain configuration using StdConfig
      * @param chainId The chain ID we're loading config for
      */
-    function loadChainConfigFromStdConfig(uint256 chainId) internal view returns (ChainConfig memory) {
+    function loadChainConfigFromStdConfig(uint256 chainId)
+        internal
+        view
+        returns (ChainConfig memory)
+    {
         ChainConfig memory chainConfig;
 
         chainConfig.chainId = chainId;
@@ -293,7 +295,7 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
             uint256 chainId = targetChainIds[i];
 
             DeployedContracts memory deployed;
-            
+
             // Read deployed contract addresses from config, defaulting to address(0) if not set
             deployed.orchestrator = tryGetAddress(chainId, "orchestrator_deployed");
             deployed.ithacaAccount = tryGetAddress(chainId, "ithaca_account_deployed");
@@ -309,7 +311,7 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
             deployedContracts[chainId] = deployed;
         }
     }
-    
+
     /**
      * @notice Try to get an address from config, return address(0) if not found
      */
@@ -437,7 +439,9 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
             uint256 chainId = targetChainIds[i];
             ChainConfig memory config = chainConfigs[chainId];
 
-            console.log(string.concat(unicode"[✓] ", config.name, " (", vm.toString(chainId), ")"));
+            console.log(
+                string.concat(unicode"[✓] ", config.name, " (", vm.toString(chainId), ")")
+            );
         }
 
         console.log("");
@@ -476,7 +480,10 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         }
 
         // Only write to config file during actual broadcasts, not simulations
-        if (vm.isContext(VmSafe.ForgeContext.ScriptBroadcast) || vm.isContext(VmSafe.ForgeContext.ScriptResume)) {
+        if (
+            vm.isContext(VmSafe.ForgeContext.ScriptBroadcast)
+                || vm.isContext(VmSafe.ForgeContext.ScriptResume)
+        ) {
             if (keccak256(bytes(contractName)) == keccak256("Orchestrator")) {
                 config.set(chainId, "orchestrator_deployed", contractAddress);
             } else if (keccak256(bytes(contractName)) == keccak256("IthacaAccount")) {
@@ -500,7 +507,6 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
             }
         }
     }
-
 
     /**
      * @notice Verify Safe Singleton Factory is deployed
@@ -612,8 +618,13 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         DeployedContracts memory deployed
     ) internal {
         bytes memory creationCode = type(Orchestrator).creationCode;
+        // why: bake the owner into initcode so the #426 withdrawTokens guard is
+        // controllable under CREATE2 (msg.sender would be the factory). Reuse the
+        // funder owner — same ops trust domain, already in the fixed authority set,
+        // so no extra key to bake and the address stays uniform across chains.
+        bytes memory args = abi.encode(config.funderOwner);
         address orchestrator =
-            deployContractWithCreate2(chainId, creationCode, "", "Orchestrator");
+            deployContractWithCreate2(chainId, creationCode, args, "Orchestrator");
 
         saveDeployedContract(chainId, "Orchestrator", orchestrator);
         deployed.orchestrator = orchestrator;
@@ -625,7 +636,10 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         DeployedContracts memory deployed
     ) internal {
         // Ensure Orchestrator is deployed first (dependency)
-        require(deployed.orchestrator != address(0), "Orchestrator must be deployed before IthacaAccount");
+        require(
+            deployed.orchestrator != address(0),
+            "Orchestrator must be deployed before IthacaAccount"
+        );
 
         bytes memory creationCode = type(IthacaAccount).creationCode;
         bytes memory args = abi.encode(deployed.orchestrator);
@@ -642,7 +656,10 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         DeployedContracts memory deployed
     ) internal {
         // Ensure IthacaAccount is deployed first (dependency)
-        require(deployed.ithacaAccount != address(0), "IthacaAccount must be deployed before AccountProxy");
+        require(
+            deployed.ithacaAccount != address(0),
+            "IthacaAccount must be deployed before AccountProxy"
+        );
 
         bytes memory proxyCode = LibEIP7702.proxyInitCode(deployed.ithacaAccount, address(0));
         address accountProxy = deployContractWithCreate2(chainId, proxyCode, "", "AccountProxy");
@@ -697,8 +714,7 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
     ) internal {
         bytes memory creationCode = type(SimpleSettler).creationCode;
         bytes memory args = abi.encode(config.settlerOwner);
-        address settler =
-            deployContractWithCreate2(chainId, creationCode, args, "SimpleSettler");
+        address settler = deployContractWithCreate2(chainId, creationCode, args, "SimpleSettler");
 
         console.log("  Owner:", config.settlerOwner);
         saveDeployedContract(chainId, "SimpleSettler", settler);
@@ -712,16 +728,13 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
     ) internal {
         bytes memory creationCode = type(LayerZeroSettler).creationCode;
         bytes memory args = abi.encode(config.l0SettlerOwner, config.l0SettlerSigner);
-        address settler =
-            deployContractWithCreate2(chainId, creationCode, args, "LayerZeroSettler");
+        address settler = deployContractWithCreate2(chainId, creationCode, args, "LayerZeroSettler");
 
         console.log("  Owner:", config.l0SettlerOwner);
         console.log("  L0SettlerSigner:", config.l0SettlerSigner);
         console.log("  Endpoint to be configured:", config.layerZeroEndpoint);
         console.log("  EID:", config.layerZeroEid);
-        console.log(
-            "  Note: Endpoint must be set by owner via ConfigureLayerZeroSettler script"
-        );
+        console.log("  Note: Endpoint must be set by owner via ConfigureLayerZeroSettler script");
 
         saveDeployedContract(chainId, "LayerZeroSettler", settler);
         deployed.layerZeroSettler = settler;

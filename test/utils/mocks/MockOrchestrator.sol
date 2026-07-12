@@ -9,7 +9,7 @@ import {Brutalizer} from "../Brutalizer.sol";
 contract MockOrchestrator is Orchestrator, Brutalizer {
     error NoRevertEncountered();
 
-    constructor() Orchestrator() {}
+    constructor() Orchestrator(msg.sender) {}
 
     function computeDigest(SignedCall calldata preCall) public view returns (bytes32) {
         return _computeDigest(preCall);

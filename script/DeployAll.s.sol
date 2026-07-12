@@ -21,7 +21,7 @@ contract DeployAllScript is Script {
 
     function run() external {
         vm.startBroadcast();
-        orchestrator = address(new Orchestrator());
+        orchestrator = address(new Orchestrator(msg.sender));
         accountImplementation = address(new IthacaAccount(address(orchestrator)));
         accountProxy = LibEIP7702.deployProxy(accountImplementation, address(0));
         simulator = address(new Simulator());
