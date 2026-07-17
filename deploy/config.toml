@@ -1,3 +1,6 @@
+# oportet canonical deploy config — TESTNET (Base Sepolia 84532, Rise Testnet 11155931) + MAINNET (Base 8453, Polygon 137, Rise 4153).
+# All chains share the uniform CREATE2 set. Deploy input for DeployMain/ConfigureLayerZeroSettler/FundSigners.
+
 [84532]
 endpoint_url = "${RPC_84532}"
 
@@ -109,3 +112,192 @@ contracts = [
 ]
 layerzero_required_dvns = ["dvn_layerzero_labs"]
 layerzero_optional_dvns = []
+
+[8453]
+endpoint_url = "${RPC_8453}"
+
+[8453.bool]
+is_testnet = false
+
+[8453.address]
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
+layerzero_endpoint = "0x1a44076050125825900e736c501f859c50fe728c"
+layerzero_settler_address = "0x0000000000000000000000000000000000000000"
+layerzero_settler_deployed = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
+layerzero_send_uln302 = "0xb5320b0b3a13cc860893e2bd79fcd7e13484dda2"
+layerzero_receive_uln302 = "0xc70ab6f32772f59fbfc23889caf4ba3376c84baf"
+dvn_layerzero_labs = "0x9e059a54699a285714207b43b055483e78faac25"
+dvn_nethermind = "0xcd37ca043f8479064e10635020c65ffc005d36f6"
+dvn_horizen = "0xa7b5189bca84cd304d8553977c7c614329750d99"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
+supported_orchestrators = ["0xEd7c1e839381c489Dcd1ED3CE1B0e79DaE714f77"]
+orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
+ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
+account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
+simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
+escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
+
+[8453.uint]
+chain_id = 8453
+layerzero_eid = 30184
+target_balance = "1000000000000000"
+default_num_signers = 3
+layerzero_confirmations = 10
+layerzero_max_message_size = 10000
+layerzero_optional_dvn_threshold = 1
+exp_mint_amount = "5000000000000000000000"
+layerzero_destination_chain_ids = [
+    137,
+    4153,
+]
+
+[8453.bytes32]
+salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
+
+[8453.string]
+name = "Base"
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
+layerzero_required_dvns = ["dvn_layerzero_labs"]
+layerzero_optional_dvns = [
+    "dvn_horizen",
+    "dvn_nethermind",
+]
+
+[137]
+endpoint_url = "${RPC_137}"
+
+[137.bool]
+is_testnet = false
+
+[137.address]
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
+layerzero_endpoint = "0x1a44076050125825900e736c501f859c50fe728c"
+layerzero_settler_address = "0x0000000000000000000000000000000000000000"
+layerzero_settler_deployed = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
+layerzero_send_uln302 = "0x6c26c61a97006888ea9e4fa36584c7df57cd9da3"
+layerzero_receive_uln302 = "0x1322871e4ab09bc7f5717189434f97bbd9546e95"
+dvn_layerzero_labs = "0x23de2fe932d9043291f870324b74f820e11dc81a"
+dvn_nethermind = "0x31f748a368a893bdb5abb67ec95f232507601a73"
+dvn_horizen = "0x25e0e650a78e6304a3983fc4b7ffc6544b1beea6"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
+supported_orchestrators = ["0xEd7c1e839381c489Dcd1ED3CE1B0e79DaE714f77"]
+orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
+ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
+account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
+simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
+escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
+
+[137.uint]
+chain_id = 137
+layerzero_eid = 30109
+target_balance = "500000000000000000"
+default_num_signers = 3
+layerzero_confirmations = 120
+layerzero_max_message_size = 10000
+layerzero_optional_dvn_threshold = 1
+exp_mint_amount = "5000000000000000000000"
+layerzero_destination_chain_ids = [
+    8453,
+    4153,
+]
+
+[137.bytes32]
+salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
+
+[137.string]
+name = "Polygon"
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
+layerzero_required_dvns = ["dvn_layerzero_labs"]
+layerzero_optional_dvns = [
+    "dvn_horizen",
+    "dvn_nethermind",
+]
+
+[4153]
+endpoint_url = "${RPC_4153}"
+
+[4153.bool]
+is_testnet = false
+
+[4153.address]
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
+layerzero_endpoint = "0x6f475642a6e85809b1c36fa62763669b1b48dd5b"
+layerzero_settler_address = "0x0000000000000000000000000000000000000000"
+layerzero_settler_deployed = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
+layerzero_send_uln302 = "0xc39161c743d0307eb9bcc9fef03eeb9dc4802de7"
+layerzero_receive_uln302 = "0xe1844c5d63a9543023008d332bd3d2e6f1fe1043"
+dvn_layerzero_labs = "0x282b3386571f7f794450d5789911a9804fa346b4"
+dvn_nethermind = "0x8d77d35604a9f37f488e41d1d916b2a0088f82dd"
+dvn_horizen = "0x276e6b1138d2d49c0cda86658765d12ef84550c1"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
+supported_orchestrators = ["0xEd7c1e839381c489Dcd1ED3CE1B0e79DaE714f77"]
+orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
+ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
+account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
+simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
+escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
+
+[4153.uint]
+chain_id = 4153
+layerzero_eid = 30401
+target_balance = "1000000000000000"
+default_num_signers = 3
+layerzero_confirmations = 5
+layerzero_max_message_size = 10000
+layerzero_optional_dvn_threshold = 1
+exp_mint_amount = "5000000000000000000000"
+layerzero_destination_chain_ids = [
+    8453,
+    137,
+]
+
+[4153.bytes32]
+salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
+
+[4153.string]
+name = "Rise"
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
+layerzero_required_dvns = ["dvn_layerzero_labs"]
+layerzero_optional_dvns = [
+    "dvn_horizen",
+    "dvn_nethermind",
+]
