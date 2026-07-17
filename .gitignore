@@ -5,6 +5,9 @@ out/
 # Ignores development broadcast logs
 broadcast/
 
+# Deploy config snapshots (ops artifacts; canonical values live in config.toml + ops docs)
+deploy/slice*.toml
+
 # Dotenv file
 .env
 .DS_Store

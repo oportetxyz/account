@@ -1,57 +1,3 @@
-[11155111]
-endpoint_url = "${RPC_11155111}"
-
-[11155111.bool]
-is_testnet = true
-
-[11155111.address]
-funder_owner = "0x0000000000000000000000000000000000000003"
-funder_signer = "0x0000000000000000000000000000000000000002"
-settler_owner = "0x0000000000000000000000000000000000000004"
-l0_settler_owner = "0x0000000000000000000000000000000000000005"
-l0_settler_signer = "0x0000000000000000000000000000000000000006"
-layerzero_endpoint = "0x6EDCE65403992e310A62460808c4b910D972f10f"
-layerzero_settler_address = "0x4225041FF3DB1C7d7a1029406bB80C7298767aca"
-layerzero_send_uln302 = "0xC1868e054425D378095A003EcbA3823a5D0135C9"
-layerzero_receive_uln302 = "0x12523de19dc41c91F7d2093E0CFbB76b17012C8d"
-dvn_layerzero_labs = "0x8eebf8b423B73bFCa51a1Db4B7354AA0bFCA9193"
-dvn_google_cloud = "0x8e5a7b5959C5A7C732b87dCE401E07F5819eEC2d"
-exp_minter_address = "0x0000000000000000000000000000000000000003"
-supported_orchestrators = ["0xEd7c1e839381c489Dcd1ED3CE1B0e79DaE714f77"]
-orchestrator_deployed = "0xCa58a1296c5AE231A2963A26E11f722bfe65acd4"
-ithaca_account_deployed = "0xC203A827A6DB2d09fbF052f88e7aD794EEbf8928"
-account_proxy_deployed = "0x0B5d691F3A98B705756ab196CFe4af97f35e06E4"
-simulator_deployed = "0x3306F2DD87887885f4de81aF6BD88b648E467f4e"
-simple_funder_deployed = "0xa0BF9a30fD55A45BF09309513734B8194fBE3934"
-escrow_deployed = "0x669a3aB5816d1ADdbFdecE2F6B238D323F056248"
-simple_settler_deployed = "0xFB0F29c658145DbDb1Bf974C8A342F4E78BF9801"
-layerzero_settler_deployed = "0xC93D0142D960F7B33440F09B13917C195e09ffA0"
-exp_token_deployed = "0x4D335fa317FB8d5493b83e06161134ec611Bc188"
-exp2_token_deployed = "0x0348152303686f2197b24981571FCf8c36c66Cc5"
-
-[11155111.uint]
-chain_id = 11155111
-layerzero_eid = 40161
-target_balance = "50000000000000000"
-default_num_signers = 10
-layerzero_confirmations = 1
-layerzero_max_message_size = 10000
-layerzero_optional_dvn_threshold = 0
-exp_mint_amount = "1000000000000000000000"
-layerzero_destination_chain_ids = [
-    84532,
-    11155420,
-]
-
-[11155111.bytes32]
-salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
-
-[11155111.string]
-name = "Sepolia"
-contracts = ["ALL"]
-layerzero_required_dvns = ["dvn_layerzero_labs"]
-layerzero_optional_dvns = []
-
 [84532]
 endpoint_url = "${RPC_84532}"
 
@@ -59,97 +5,107 @@ endpoint_url = "${RPC_84532}"
 is_testnet = true
 
 [84532.address]
-funder_owner = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-funder_signer = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-settler_owner = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-l0_settler_owner = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-l0_settler_signer = "0x0000000000000000000000000000000000000006"
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
 layerzero_endpoint = "0x6EDCE65403992e310A62460808c4b910D972f10f"
-layerzero_settler_address = "0xd71d3c3ff2249A67cEa12030b20E66734fB1f833"
+layerzero_settler_address = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
+layerzero_settler_deployed = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
 layerzero_send_uln302 = "0xC1868e054425D378095A003EcbA3823a5D0135C9"
 layerzero_receive_uln302 = "0x12523de19dc41c91F7d2093E0CFbB76b17012C8d"
 dvn_layerzero_labs = "0xe1a12515F9AB2764b887bF60B923Ca494EBbB2d6"
 dvn_google_cloud = "0xFc9d8E5d3FaB22fB6E93E9E2C90916E9dCa83Ade"
-exp_minter_address = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
 supported_orchestrators = ["0xEd7c1e839381c489Dcd1ED3CE1B0e79DaE714f77"]
-orchestrator_deployed = "0xcA91Dba3dab46478FC466ef76491AaB78dbC2d0f"
-ithaca_account_deployed = "0x1E7a350c76CCd750470930B5026fEa26F44cf937"
-account_proxy_deployed = "0xDe938C3642205782d52535d12eC9dFb4D1bC832b"
-simulator_deployed = "0xb100Dc6e1BA9e54965fBB865F65Ac42b28BC25E8"
-simple_funder_deployed = "0x57C3563C06CeDda15F7622A83a1BdBa84125351D"
+orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
+ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
+account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
+simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
 escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
-simple_settler_deployed = "0x5aE547Dc236c31d30f19a5B9040992728Ac441A0"
-layerzero_settler_deployed = "0x23D18C5b5Df22fDcf6dDE73b0f1a76ee5761d206"
-exp_token_deployed = "0xa8071DA5e994cB8e3eB56CaD0FBB6ca424dD8dc0"
-exp2_token_deployed = "0x61727778216127D0843A99A3e91e99C27e9f3BC7"
 
 [84532.uint]
 chain_id = 84532
 layerzero_eid = 40245
 target_balance = "1000000000000000"
-default_num_signers = 10
+default_num_signers = 3
 layerzero_confirmations = 1
 layerzero_max_message_size = 10000
 layerzero_optional_dvn_threshold = 0
 exp_mint_amount = "5000000000000000000000"
-layerzero_destination_chain_ids = [11155420]
+layerzero_destination_chain_ids = [11155931]
 
 [84532.bytes32]
 salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
 
 [84532.string]
 name = "Base Sepolia"
-contracts = ["ALL"]
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
 layerzero_required_dvns = ["dvn_layerzero_labs"]
 layerzero_optional_dvns = []
 
-[11155420]
-endpoint_url = "${RPC_11155420}"
+[11155931]
+endpoint_url = "${RPC_11155931}"
 
-[11155420.bool]
+[11155931.bool]
 is_testnet = true
 
-[11155420.address]
-funder_owner = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-funder_signer = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-settler_owner = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-l0_settler_owner = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
-l0_settler_signer = "0x0000000000000000000000000000000000000006"
-layerzero_endpoint = "0x6EDCE65403992e310A62460808c4b910D972f10f"
-layerzero_settler_address = "0x9F610182BD096ab7734C1365A44f48dD0A574d0D"
-layerzero_send_uln302 = "0xB31D2cb502E25B30C651842C7C3293c51Fe6d16f"
-layerzero_receive_uln302 = "0x9284fd59B95b9143AF0b9795CAC16eb3C723C9Ca"
-dvn_layerzero_labs = "0x28B6140ead70cb2Fb669705b3598ffB4BEaA060b"
-dvn_google_cloud = "0x28b8B8Ea5C695EFa657B6b86a4a8E90ccbA93E9e"
-exp_minter_address = "0xB6918DaaB07e31556B45d7Fd2a33021Bc829adf4"
+[11155931.address]
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
+layerzero_endpoint = "0x3acaaf60502791d199a5a5f0b173d78229ebfe32"
+layerzero_settler_address = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
+layerzero_settler_deployed = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
+layerzero_send_uln302 = "0x45841dd1ca50265da7614fc43a361e526c0e6160"
+layerzero_receive_uln302 = "0xd682ecf100f6f4284138aa925348633b0611ae21"
+dvn_layerzero_labs = "0xa78a78a13074ed93ad447a26ec57121f29e8fec2"
+dvn_google_cloud = "0x0000000000000000000000000000000000000000"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
 supported_orchestrators = ["0xEd7c1e839381c489Dcd1ED3CE1B0e79DaE714f77"]
-orchestrator_deployed = "0xcA91Dba3dab46478FC466ef76491AaB78dbC2d0f"
-ithaca_account_deployed = "0x1E7a350c76CCd750470930B5026fEa26F44cf937"
-account_proxy_deployed = "0xDe938C3642205782d52535d12eC9dFb4D1bC832b"
-simulator_deployed = "0xb100Dc6e1BA9e54965fBB865F65Ac42b28BC25E8"
-simple_funder_deployed = "0x57C3563C06CeDda15F7622A83a1BdBa84125351D"
+orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
+ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
+account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
+simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
 escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
-simple_settler_deployed = "0x5aE547Dc236c31d30f19a5B9040992728Ac441A0"
-layerzero_settler_deployed = "0x23D18C5b5Df22fDcf6dDE73b0f1a76ee5761d206"
-exp_token_deployed = "0xa8071DA5e994cB8e3eB56CaD0FBB6ca424dD8dc0"
-exp2_token_deployed = "0x61727778216127D0843A99A3e91e99C27e9f3BC7"
 
-[11155420.uint]
-chain_id = 11155420
-layerzero_eid = 40232
+[11155931.uint]
+chain_id = 11155931
+layerzero_eid = 40438
 target_balance = "1000000000000000"
-default_num_signers = 10
+default_num_signers = 3
 layerzero_confirmations = 1
 layerzero_max_message_size = 10000
 layerzero_optional_dvn_threshold = 0
-exp_mint_amount = "2000000000000000000000"
+exp_mint_amount = "5000000000000000000000"
 layerzero_destination_chain_ids = [84532]
 
-[11155420.bytes32]
+[11155931.bytes32]
 salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
 
-[11155420.string]
-name = "Optimism Sepolia"
-contracts = ["ALL"]
+[11155931.string]
+name = "Rise Testnet"
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
 layerzero_required_dvns = ["dvn_layerzero_labs"]
 layerzero_optional_dvns = []
