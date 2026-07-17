@@ -494,8 +494,28 @@ contract FundSigners is Script, Config {
         chainConfig.defaultNumSigners = numSigners == 0 ? 10 : numSigners; // Default fallback
 
         // Read supported orchestrators - required field
-        chainConfig.supportedOrchestrators =
+        address[] memory supported =
             config.get(chainId, "supported_orchestrators").toAddressArray();
+
+        // why: SimpleFunder.fund() reverts OnlyOrchestrator() unless the calling
+        // orchestrator is authorized, and the relay always routes intents through
+        // the deployed Orchestrator (orchestrator_deployed). If that address is not
+        // in supported_orchestrators, every sponsored intent reverts. Fail loud here
+        // instead of silently registering only a stale placeholder (the mainnet
+        // 0xEd7c1e83 bug).
+        address deployedOrchestrator =
+            config.get(chainId, "orchestrator_deployed").toAddress();
+        bool includesDeployed = false;
+        for (uint256 i = 0; i < supported.length; i++) {
+            if (supported[i] == deployedOrchestrator) {
+                includesDeployed = true;
+                break;
+            }
+        }
+        require(
+            includesDeployed, "supported_orchestrators must include orchestrator_deployed"
+        );
+        chainConfig.supportedOrchestrators = supported;
 
         return chainConfig;
     }
