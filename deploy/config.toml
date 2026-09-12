@@ -329,6 +329,13 @@ dvn_nethermind = "0xa59ba433ac34d2927232918ef5b2eaafcf130ba5"
 dvn_horizen = "0x380275805876ff19055ea900cdb2b46a94ecf20d"
 exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
 supported_orchestrators = ["0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"]
+orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
+ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
+account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
+simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
+escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
+layerzero_settler_deployed = "0xF8f849C9Ad809f3A27d08D05A9fe71b4F978C9Bd"
 
 [1.uint]
 chain_id = 1
