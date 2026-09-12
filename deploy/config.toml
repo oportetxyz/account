@@ -433,7 +433,10 @@ contracts = [
     "LayerZeroSettler",
 ]
 layerzero_required_dvns = ["dvn_layerzero_labs"]
+# LayerZero rejects unsorted DVN lists (LZ_ULN_Unsorted). Robinhood is the only
+# chain where nethermind's address sorts below horizen's, so the order differs
+# from the other four.
 layerzero_optional_dvns = [
-    "dvn_horizen",
     "dvn_nethermind",
+    "dvn_horizen",
 ]
