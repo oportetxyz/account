@@ -152,8 +152,10 @@ layerzero_max_message_size = 10000
 layerzero_optional_dvn_threshold = 1
 exp_mint_amount = "5000000000000000000000"
 layerzero_destination_chain_ids = [
+    1,
     137,
     4153,
+    4663,
 ]
 
 [8453.bytes32]
@@ -215,8 +217,10 @@ layerzero_max_message_size = 10000
 layerzero_optional_dvn_threshold = 1
 exp_mint_amount = "5000000000000000000000"
 layerzero_destination_chain_ids = [
+    1,
     8453,
     4153,
+    4663,
 ]
 
 [137.bytes32]
@@ -278,8 +282,10 @@ layerzero_max_message_size = 10000
 layerzero_optional_dvn_threshold = 1
 exp_mint_amount = "5000000000000000000000"
 layerzero_destination_chain_ids = [
+    1,
     8453,
     137,
+    4663,
 ]
 
 [4153.bytes32]
@@ -287,6 +293,122 @@ salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
 
 [4153.string]
 name = "Rise"
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
+layerzero_required_dvns = ["dvn_layerzero_labs"]
+layerzero_optional_dvns = [
+    "dvn_horizen",
+    "dvn_nethermind",
+]
+
+[1]
+endpoint_url = "${RPC_1}"
+
+[1.bool]
+is_testnet = false
+
+[1.address]
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
+layerzero_endpoint = "0x1a44076050125825900e736c501f859c50fe728c"
+layerzero_settler_address = "0x0000000000000000000000000000000000000000"
+layerzero_send_uln302 = "0xbb2ea70c9e858123480642cf96acbcce1372dce1"
+layerzero_receive_uln302 = "0xc02ab410f0734efa3f14628780e6e695156024c2"
+dvn_layerzero_labs = "0x589dedbd617e0cbcb916a9223f4d1300c294236b"
+dvn_nethermind = "0xa59ba433ac34d2927232918ef5b2eaafcf130ba5"
+dvn_horizen = "0x380275805876ff19055ea900cdb2b46a94ecf20d"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
+supported_orchestrators = ["0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"]
+
+[1.uint]
+chain_id = 1
+layerzero_eid = 30101
+target_balance = "1000000000000000"
+default_num_signers = 3
+layerzero_confirmations = 15
+layerzero_max_message_size = 10000
+layerzero_optional_dvn_threshold = 1
+exp_mint_amount = "5000000000000000000000"
+layerzero_destination_chain_ids = [
+    8453,
+    137,
+    4153,
+    4663,
+]
+
+[1.bytes32]
+salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
+
+[1.string]
+name = "Ethereum"
+contracts = [
+    "Orchestrator",
+    "IthacaAccount",
+    "AccountProxy",
+    "Simulator",
+    "SimpleFunder",
+    "Escrow",
+    "LayerZeroSettler",
+]
+layerzero_required_dvns = ["dvn_layerzero_labs"]
+layerzero_optional_dvns = [
+    "dvn_horizen",
+    "dvn_nethermind",
+]
+
+[4663]
+endpoint_url = "${RPC_4663}"
+
+[4663.bool]
+is_testnet = false
+
+[4663.address]
+funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
+l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
+layerzero_endpoint = "0x6f475642a6e85809b1c36fa62763669b1b48dd5b"
+layerzero_settler_address = "0x0000000000000000000000000000000000000000"
+layerzero_send_uln302 = "0xc39161c743d0307eb9bcc9fef03eeb9dc4802de7"
+layerzero_receive_uln302 = "0xe1844c5d63a9543023008d332bd3d2e6f1fe1043"
+dvn_layerzero_labs = "0xd01ae6905d48315f7be10c7330aecf8360ef5b12"
+dvn_nethermind = "0x0ffe02df012299a370d5dd69298a5826eacafdf8"
+dvn_horizen = "0x1258a278519c7f4bd997a9c3bfd4aa802a028d89"
+exp_minter_address = "0x3824525F5913F1908ce62ea5532C9757Bf3E25A7"
+supported_orchestrators = ["0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"]
+
+[4663.uint]
+chain_id = 4663
+layerzero_eid = 30416
+target_balance = "1000000000000000"
+default_num_signers = 3
+layerzero_confirmations = 50
+layerzero_max_message_size = 10000
+layerzero_optional_dvn_threshold = 1
+exp_mint_amount = "5000000000000000000000"
+layerzero_destination_chain_ids = [
+    1,
+    8453,
+    137,
+    4153,
+]
+
+[4663.bytes32]
+salt = "0xdf08a9fa957a9ac004f84f3a8ab7318a7be55d59948f46497bd3717865295b61"
+
+[4663.string]
+name = "Robinhood"
 contracts = [
     "Orchestrator",
     "IthacaAccount",
