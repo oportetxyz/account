@@ -4,6 +4,10 @@
 
 **All-in-one EIP-7702 powered account contract, coupled with [Porto](https://github.com/ithacaxyz/porto)**
 
+> This is Oportet's fork of the [Ithaca account contracts](https://github.com/ithacaxyz/account). Ithaca designed and built them. The fork changes `src/Orchestrator.sol` and adds the deployments Oportet runs.
+>
+> The audit and the bug bounty described below are Ithaca's. They cover Ithaca's code, not the changes made in this fork.
+
 Every app needs an account, traditionally requiring separate services for auth, payments, and recovery. Doing this in a way that empowers users with control over their funds and their data is the core challenge of the crypto space. While crypto wallets have made great strides, users still face a fragmented experience - juggling private keys, managing account balances across networks,
 having to install browser extensions, and more.
 
