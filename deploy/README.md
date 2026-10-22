@@ -340,6 +340,9 @@ endpoint_url = "${RPC_CHAINID}"
 is_testnet = true
 
 [new-chain.address]
+# The Orchestrator's CREATE2 arg: always the original 0x6249...D8d9, or every account
+# address changes. Copy it, and funder_owner and funder_signer, from an existing chain.
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
 funder_owner = "0x..."
 # ... all required fields
 
@@ -361,7 +364,20 @@ contracts = ["ALL"]
 export RPC_CHAINID=https://rpc.url
 ```
 
-3. Deploy:
+3. Deploy the Orchestrator and hand it to `funder_owner` in one transaction.
+   `orchestrator_owner` is a key that leaked in October 2026, so DeployMain refuses to
+   deploy the Orchestrator with it. DeployOrchestrator has the old key sign an EIP-7702
+   authorization and the new owner send the transaction; the old key needs no gas. Its
+   value is `LEGACY_RELAY_FUNDER_OWNER_KEY` in Infisical oportet prod `/relay`.
+
+```bash
+ORCHESTRATOR_INIT_OWNER_KEY=<old key> forge script \
+  deploy/DeployOrchestrator.s.sol:DeployOrchestrator \
+  --sig "run(uint256)" CHAINID \
+  --broadcast --private-keys <funder_owner key>
+```
+
+4. Deploy the rest; the Orchestrator is found already deployed:
 
 ```bash
 forge script deploy/DeployMain.s.sol:DeployMain \
@@ -412,7 +428,8 @@ forge script deploy/DeployMain.s.sol:DeployMain \
 | --------------------------------------- | ------------------------------ | ------------------------------------------------ |
 | `chain_id`, `name`, `is_testnet`        | All scripts                    | Chain identification                             |
 | `pause_authority`                       | DeployMain                     | Contract pause permissions                       |
-| `funder_owner`, `funder_signer`         | DeployMain, FundSigners        | SimpleFunder control                             |
+| `funder_owner`, `funder_signer`         | DeployMain, FundSigners        | SimpleFunder control; Orchestrator owner         |
+| `orchestrator_owner`                    | DeployMain, DeployOrchestrator | Orchestrator CREATE2 arg, fixed for good         |
 | `settler_owner`                         | DeployMain                     | SimpleSettler ownership                          |
 | `l0_settler_owner`                      | DeployMain, ConfigureLayerZero | LayerZeroSettler ownership                       |
 | `salt`                                  | DeployMain                     | CREATE2 deployment salt                          |

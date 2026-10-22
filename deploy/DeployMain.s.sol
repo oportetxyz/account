@@ -59,6 +59,7 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         bool isTestnet;
         address funderOwner;
         address funderSigner;
+        address orchestratorOwner;
         address settlerOwner;
         address l0SettlerOwner;
         address l0SettlerSigner;
@@ -211,6 +212,12 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
         // Load addresses
         chainConfig.funderOwner = config.get(chainId, "funder_owner").toAddress();
         chainConfig.funderSigner = config.get(chainId, "funder_signer").toAddress();
+        // why: falls back to funder_owner for configs written before the 2026-10 key rotation
+        // split the two (the slice tomls).
+        chainConfig.orchestratorOwner = tryGetAddress(chainId, "orchestrator_owner");
+        if (chainConfig.orchestratorOwner == address(0)) {
+            chainConfig.orchestratorOwner = chainConfig.funderOwner;
+        }
         chainConfig.settlerOwner = config.get(chainId, "settler_owner").toAddress();
         chainConfig.l0SettlerOwner = config.get(chainId, "l0_settler_owner").toAddress();
         chainConfig.l0SettlerSigner = config.get(chainId, "l0_settler_signer").toAddress();
@@ -619,10 +626,20 @@ contract DeployMain is Script, Config, SafeSingletonDeployer {
     ) internal {
         bytes memory creationCode = type(Orchestrator).creationCode;
         // why: bake the owner into initcode so the #426 withdrawTokens guard is
-        // controllable under CREATE2 (msg.sender would be the factory). Reuse the
-        // funder owner — same ops trust domain, already in the fixed authority set,
-        // so no extra key to bake and the address stays uniform across chains.
-        bytes memory args = abi.encode(config.funderOwner);
+        // controllable under CREATE2 (msg.sender would be the factory). The address
+        // must stay uniform across chains, so this stays the original owner even
+        // after the owner key rotates.
+        bytes memory args = abi.encode(config.orchestratorOwner);
+        // why: once the two differ, the baked owner is a retired (leaked) key, and a
+        // plain deploy would leave the Orchestrator with it. DeployOrchestrator.s.sol
+        // deploys and hands it over in one transaction instead.
+        if (config.orchestratorOwner != config.funderOwner) {
+            address predicted = computeAddress(creationCode, args, config.salt);
+            require(
+                predicted.code.length > 0,
+                "Run DeployOrchestrator.s.sol first: orchestrator_owner is a retired key"
+            );
+        }
         address orchestrator =
             deployContractWithCreate2(chainId, creationCode, args, "Orchestrator");
 

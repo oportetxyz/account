@@ -38,8 +38,9 @@ interface ISimpleFunder is IOwnable {
  *         `run` does both back to back, for a chain where downtime does not matter.
  *
  * @dev why: the account set (Orchestrator -> IthacaAccount -> AccountProxy) is not redeployed.
- *      Accounts bind the Orchestrator address immutably and `funder_owner` is its CREATE2 arg,
- *      so `deploy/config.toml` keeps the OLD `funder_owner` to keep that set reproducible.
+ *      Accounts bind the Orchestrator address immutably and the old owner is its CREATE2 arg,
+ *      kept as `orchestrator_owner` in `deploy/config.toml` so the set stays reproducible; new
+ *      chains deploy it through DeployOrchestrator.s.sol.
  *      The SimpleFunder sits outside that chain (only the relay's `funder` points at it), so it
  *      is replaced, and its initcode now carries keys the attacker does not hold: nobody else
  *      can claim its address on a chain we have not reached yet.

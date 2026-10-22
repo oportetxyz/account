@@ -8,6 +8,7 @@ endpoint_url = "${RPC_84532}"
 is_testnet = true
 
 [84532.address]
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
 funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
 funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
@@ -26,7 +27,7 @@ orchestrator_deployed = "0x6A9Aa49c955BF766b44979A9e375Bd83e2a8f485"
 ithaca_account_deployed = "0xa172f2a1d80859aB66c67289b82C7b084dd4fFC8"
 account_proxy_deployed = "0x9cEC2E86E7Cb43cB56350d8f928DFC194727E096"
 simulator_deployed = "0x3006de101E96e85272d5B5Ad07A9738fa7678008"
-simple_funder_deployed = "0x83AE602E15C01D7197810539e7E1A5E5Dd029eb1"
+simple_funder_deployed = "0xFC4Cd2DCfF0F1e2781BF9fE7F48378843E176A2e"
 escrow_deployed = "0xCd075ceb5Cd463a9233a8085fc915767139F655c"
 
 [84532.uint]
@@ -64,8 +65,9 @@ endpoint_url = "${RPC_11155931}"
 is_testnet = true
 
 [11155931.address]
-funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
-funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_owner = "0xC851D140CD548BBbf9eF9E9c39f62687036171A7"
+funder_signer = "0x2CD515A31e1536aBa218F6ECeec67DAA68c437B8"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
@@ -120,8 +122,9 @@ endpoint_url = "${RPC_8453}"
 is_testnet = false
 
 [8453.address]
-funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
-funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_owner = "0xC851D140CD548BBbf9eF9E9c39f62687036171A7"
+funder_signer = "0x2CD515A31e1536aBa218F6ECeec67DAA68c437B8"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
@@ -185,8 +188,9 @@ endpoint_url = "${RPC_137}"
 is_testnet = false
 
 [137.address]
-funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
-funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_owner = "0xC851D140CD548BBbf9eF9E9c39f62687036171A7"
+funder_signer = "0x2CD515A31e1536aBa218F6ECeec67DAA68c437B8"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
@@ -250,8 +254,9 @@ endpoint_url = "${RPC_4153}"
 is_testnet = false
 
 [4153.address]
-funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
-funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_owner = "0xC851D140CD548BBbf9eF9E9c39f62687036171A7"
+funder_signer = "0x2CD515A31e1536aBa218F6ECeec67DAA68c437B8"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
@@ -315,8 +320,9 @@ endpoint_url = "${RPC_1}"
 is_testnet = false
 
 [1.address]
-funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
-funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_owner = "0xC851D140CD548BBbf9eF9E9c39f62687036171A7"
+funder_signer = "0x2CD515A31e1536aBa218F6ECeec67DAA68c437B8"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
@@ -380,8 +386,9 @@ endpoint_url = "${RPC_4663}"
 is_testnet = false
 
 [4663.address]
-funder_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
-funder_signer = "0x06f516be4cB5D9C2A70FAEfBA83cf72fF39d68d3"
+orchestrator_owner = "0x6249F20C11C1cF2162A848b4bFA6FC8972d6D8d9"
+funder_owner = "0xC851D140CD548BBbf9eF9E9c39f62687036171A7"
+funder_signer = "0x2CD515A31e1536aBa218F6ECeec67DAA68c437B8"
 settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_owner = "0x9bFc4c0004e99422Cd5262843dE1A5C63673dDfe"
 l0_settler_signer = "0x08b0f99f1ca1057C6F54cbADaC3B2dD615cb0255"
